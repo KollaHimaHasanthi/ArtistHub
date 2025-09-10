@@ -1,4 +1,6 @@
-import Image from "next/image";
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { Mail, Phone, User, Lock, Eye, EyeOff, ArrowRight, Palette, Users, Building2 } from 'lucide-react';
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
