@@ -1,25 +1,16 @@
 "use client"
 
 import * as React from "react"
+import { useRouter } from "next/router"
 import {
   Command,
   UserRound,
-  Pencil,
-  CalendarDays,
-  Search,
-  BadgeDollarSign,
-  UsersRound,
-  Building2,
+  LayoutDashboard,
   Briefcase,
-  Shield,
-  Image as ImageIcon,
-  HeartHandshake,
-  Coins,
+  CalendarDays,
   Images,
-  HelpCircle,
-  FileText,
-  MessageCircleQuestion,
-  Share2,
+  HeartHandshake,
+  UsersRound,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -38,74 +29,116 @@ import {
 
 const data = {
   user: {
-    name: "Guest User",
-    email: "guest@example.com",
+    name: "Eva Murphy",
+    email: "Web Developer",
     avatar: "/avatars/shadcn.jpg",
   },
-  navMain: [
+  sections: [
     {
-      title: "User Options",
-      url: "#",
-      icon: UserRound,
-      isActive: true,
+      label: "Main Menu",
       items: [
-        { title: "View Profile", url: "#", icon: UserRound },
-        { title: "Edit Profile", url: "#", icon: Pencil },
-        { title: "Bookings", url: "#", icon: CalendarDays },
-        { title: "Search Jobs", url: "#", icon: Search },
-        { title: "Subscriptions & Packages", url: "#", icon: BadgeDollarSign },
-        { title: "Events", url: "#", icon: CalendarDays },
-        { title: "Find Artist", url: "#", icon: UsersRound },
-        { title: "Find Business", url: "#", icon: Building2 },
-        { title: "Hire Artist Groups", url: "#", icon: Briefcase },
-        { title: "Privacy Policy", url: "#", icon: Shield },
-        { title: "Post Content", url: "#", icon: ImageIcon },
-        { title: "Followers & Connections", url: "#", icon: HeartHandshake },
-        { title: "Hub Coins", url: "#", icon: Coins },
-        { title: "Post Images & Videos", url: "#", icon: Images },
+        { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard, isActive: true },
+        { title: "Posts", url: "/posts", icon: Images },
+        { title: "Jobs", url: "/jobs", icon: Briefcase },
+        { title: "Events", url: "/events", icon: CalendarDays },
+        { title: "Collabs", url: "/collaborations", icon: HeartHandshake },
+        { title: "Groups", url: "/groups", icon: UsersRound },
+        { title: "Artists", url: "/networking", icon: UsersRound },
       ],
     },
-  ],
-  navSecondary: [
-    { title: "Help & Support", url: "#", icon: HelpCircle },
-    { title: "Terms & Policies", url: "#", icon: FileText },
-  ],
-  projects: [
-    { name: "FAQ", url: "#", icon: MessageCircleQuestion },
-    { name: "Refer & Earn up to 10000", url: "#", icon: Share2 },
   ],
 }
 
 export function AppSidebar({
   ...props
 }) {
+  const router = useRouter()
+  const pathname = router?.pathname || "/"
   return (
-    <Sidebar variant="inset" {...props}>
-      <SidebarHeader>
+    <Sidebar variant="inset" className="bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800 text-white shadow-2xl" {...props}>
+      <SidebarHeader className="bg-transparent border-b border-white/10 pb-3">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
-              <a href="#">
-                <div
-                  className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+            <SidebarMenuButton size="lg" asChild className="hover:bg-white/10 transition-all duration-300">
+              <a href="#" className="group">
+                <div className="bg-white/20 text-white flex aspect-square size-9 items-center justify-center rounded-lg backdrop-blur-sm shadow-md group-hover:bg-white/25 group-hover:scale-105 transition-all duration-300">
                   <Command className="size-4" />
                 </div>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">ArtistHub</span>
-                  <span className="truncate text-xs">Enterprise</span>
+                <div className="grid flex-1 text-left leading-tight">
+                  <span className="truncate font-bold text-base group-hover:text-white/90 transition-colors duration-300">CodingLab</span>
+                  <span className="text-xs text-white/70 font-medium">Developer Hub</span>
                 </div>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
-        <NavMain items={data.navMain} />
-        {/* <NavProjects projects={data.projects} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" /> */}
+        <SidebarContent className="gap-4 bg-transparent hide-scrollbar  mt-2 overflow-y-auto px-2">
+        {data.sections?.map((section) => (
+          <div key={section.label} className="space-y-1">
+            <div className="px-3 pb-1 text-xs font-semibold text-white/80 uppercase tracking-wider">{section.label}</div>
+            <SidebarMenu className="space-y-0.5">
+              {section.items.map((item, index) => {
+                const isActive = pathname === item.url
+                return (
+                  <SidebarMenuItem key={item.title} className="relative group ">
+                    {isActive ? (
+                      <span className="absolute left-0 top-1 bottom-1 w-1 rounded-full bg-white shadow-md" />
+                    ) : null}
+                    <SidebarMenuButton 
+                      asChild 
+                      className={`group relative rounded-lg transition-all duration-300 ${
+                        isActive 
+                          ? 'bg-white text-slate-900 shadow-md' 
+                          : 'hover:bg-white/10 hover:shadow-sm'
+                      }`}
+                    >
+                      <a href={item.url} className="flex items-center gap-3 px-3 py-2.5">
+                        <item.icon 
+                          className={`size-4 transition-all duration-300 ${
+                            isActive 
+                              ? 'text-slate-900' 
+                              : 'text-white group-hover:scale-105 group-hover:text-white/90'
+                          }`} 
+                        />
+                        <span className={`font-medium text-sm transition-all duration-300 ${
+                          isActive 
+                            ? 'text-slate-900' 
+                            : 'text-white group-hover:text-white/90'
+                        }`}>
+                          {item.title}
+                        </span>
+                        {isActive && (
+                          <div className="ml-auto w-1.5 h-1.5 bg-slate-900 rounded-full animate-pulse" />
+                        )}
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                )
+              })}
+            </SidebarMenu>
+          </div>
+        ))}
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={data.user} />
+      <SidebarFooter className="bg-transparent border-t border-white/10 pt-3">
+        <div className="mx-2 mb-2 flex items-center gap-3 rounded-xl bg-white/15 p-2 text-white backdrop-blur-sm shadow-md hover:bg-white/20 transition-all duration-300 group">
+          <div className="relative">
+            <div className="flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-white/30 to-white/15 text-white font-bold text-base shadow-md group-hover:scale-105 transition-transform duration-300">
+              E
+            </div>
+            <div className="absolute -bottom-0.5 -right-0.5 size-3 rounded-full bg-green-400 border-2 border-white shadow-sm"></div>
+          </div>
+          <div className="flex-1 leading-tight">
+            <div className="text-sm font-bold group-hover:text-white/90 transition-colors duration-300 leading-tight">
+              Eva Murphy
+            </div>
+            <div className="text-xs text-white/80 font-medium mt-1">Web Developer</div>
+            <div className="text-xs text-white/60 mt-1">Online</div>
+          </div>
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse"></div>
+          </div>
+        </div>
       </SidebarFooter>
     </Sidebar>
   );
