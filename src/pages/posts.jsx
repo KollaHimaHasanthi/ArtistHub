@@ -59,273 +59,216 @@ export default function Page() {
             </Button>
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-8 p-8 bg-slate-50">
-          {/* Create Post Section */}
-          <div className="bg-white rounded-xl border border-slate-200 shadow-sm">
-            <div className="p-6">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="p-2 bg-blue-100 rounded-lg">
-                  <Plus className="h-5 w-5 text-blue-600" />
+        <div className="flex flex-1 flex-col gap-4 p-4 bg-slate-50">
+          {/* Create Post Section - Facebook-like */}
+          <div className="bg-white rounded-lg border border-slate-200 shadow-sm">
+            <div className="p-4">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                  <User className="h-4 w-4 text-white" />
                 </div>
-                <div>
-                  <h2 className="text-lg font-semibold text-slate-900">Create New Post</h2>
-                  <p className="text-sm text-slate-600">Share your creative work with the community</p>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <div>
-                  <label className="text-sm font-medium text-slate-700 mb-2 block">What's on your mind?</label>
+                <div className="flex-1">
                   <textarea 
-                    placeholder="Share your thoughts, ideas, or describe your creative work..."
-                    className="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent resize-none"
-                    rows={4}
+                    placeholder="What's on your mind?"
+                    className="w-full px-3 py-2 border-0 rounded-lg text-sm focus:outline-none resize-none bg-slate-50 placeholder-slate-500"
+                    rows={2}
                   />
                 </div>
-                
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div>
-                    <label className="text-sm font-medium text-slate-700 mb-2 block">Category</label>
-                    <select className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent">
-                      <option>Select Category</option>
-                      <option>Design</option>
-                      <option>Photography</option>
-                      <option>Illustration</option>
-                      <option>Digital Art</option>
-                      <option>UI/UX</option>
-                      <option>Branding</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium text-slate-700 mb-2 block">Tags</label>
-                    <Input placeholder="e.g. #design #creative #portfolio" />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="text-sm font-medium text-slate-700 mb-2 block">Media Upload</label>
-                  <div className="border-2 border-dashed border-slate-200 rounded-lg p-8 text-center hover:border-slate-300 transition-colors">
-                    <div className="space-y-4">
-                      <div className="flex justify-center space-x-4">
-                        <div className="p-3 bg-blue-50 rounded-lg">
-                          <Image className="h-6 w-6 text-blue-600" />
-                        </div>
-                        <div className="p-3 bg-purple-50 rounded-lg">
-                          <Video className="h-6 w-6 text-purple-600" />
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-sm text-slate-600 mb-2">Upload images or videos</p>
-                        <p className="text-xs text-slate-500">Supports JPG, PNG, MP4 up to 5MB each</p>
-                      </div>
-                      <Button variant="outline" className="border-slate-200">
-                        <Upload className="h-4 w-4 mr-2" />
-                        Choose Files
-                      </Button>
-                    </div>
-                  </div>
-                </div>
               </div>
               
-              <div className="flex items-center justify-between mt-6">
-                <div className="flex gap-2">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                    <Plus className="h-4 w-4 mr-2" />
-                    Publish Post
+              <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+                <div className="flex items-center gap-4">
+                  <Button variant="ghost" size="sm" className="text-slate-600 hover:text-blue-500 hover:bg-blue-50">
+                    <Image className="h-4 w-4 mr-1" />
+                    Photo
                   </Button>
-                  <Button variant="outline" className="border-slate-200">
-                    Save Draft
+                  <Button variant="ghost" size="sm" className="text-slate-600 hover:text-green-500 hover:bg-green-50">
+                    <Video className="h-4 w-4 mr-1" />
+                    Video
+                  </Button>
+                  <Button variant="ghost" size="sm" className="text-slate-600 hover:text-orange-500 hover:bg-orange-50">
+                    <Calendar className="h-4 w-4 mr-1" />
+                    Event
                   </Button>
                 </div>
-                <div className="text-sm text-slate-600">
-                  <span className="font-medium">12</span> posts this month
-                </div>
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6">
+                  Post
+                </Button>
               </div>
             </div>
           </div>
 
           {/* Posts Feed */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-slate-900">Community Feed</h2>
+              <h2 className="text-lg font-semibold text-slate-900">Posts</h2>
               <div className="flex gap-2">
-                <Button variant="outline" size="sm" className="border-slate-200">
-                  <Calendar className="h-4 w-4 mr-2" />
+                <Button variant="outline" size="sm" className="border-slate-200 text-xs">
+                  <Calendar className="h-3 w-3 mr-1" />
                   Recent
                 </Button>
-                <Button variant="outline" size="sm" className="border-slate-200">
-                  <Star className="h-4 w-4 mr-2" />
+                <Button variant="outline" size="sm" className="border-slate-200 text-xs">
+                  <Star className="h-3 w-3 mr-1" />
                   Popular
                 </Button>
               </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-3">
               {/* Post 1 */}
-              <div className="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
+              <div className="bg-white rounded-lg border border-slate-200 shadow-sm">
+                <div className="p-4">
+                  <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                        <User className="h-5 w-5 text-white" />
+                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                        <User className="h-4 w-4 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-slate-900">Sarah Chen</h3>
-                        <div className="flex items-center gap-2 text-sm text-slate-600">
-                          <MapPin className="h-4 w-4" />
-                          <span>Mumbai, India</span>
+                        <h3 className="font-semibold text-slate-900 text-sm">Sarah Chen</h3>
+                        <div className="flex items-center gap-1 text-xs text-slate-500">
+                          <span>2h</span>
                           <span>•</span>
-                          <span>2 hours ago</span>
+                          <MapPin className="h-3 w-3" />
+                          <span>Mumbai, India</span>
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Badge className="bg-blue-100 text-blue-700">Design</Badge>
-                      <Button variant="ghost" size="sm" className="text-slate-400 hover:text-slate-600">
+                    <div className="flex items-center gap-1">
+                      <Badge className="bg-blue-100 text-blue-700 text-xs px-2 py-1">Design</Badge>
+                      <Button variant="ghost" size="sm" className="text-slate-400 hover:text-slate-600 p-1">
                         <MoreVertical className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
                   
-                  <p className="text-slate-700 mb-4">
+                  <p className="text-slate-700 text-sm mb-3 leading-relaxed">
                     Just finished working on this brand identity project for a local startup. The logo represents growth and innovation, with a modern color palette that reflects their tech-forward approach. What do you think? #branding #logo #design
                   </p>
                   
-                  <div className="grid grid-cols-2 gap-2 mb-4">
+                  <div className="grid grid-cols-2 gap-2 mb-3">
                     <div className="aspect-square bg-slate-100 rounded-lg overflow-hidden">
                       <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                        <Image className="h-8 w-8 text-slate-400" />
+                        <Image className="h-6 w-6 text-slate-400" />
                       </div>
                     </div>
                     <div className="aspect-square bg-slate-100 rounded-lg overflow-hidden">
                       <div className="w-full h-full bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center">
-                        <Image className="h-8 w-8 text-slate-400" />
+                        <Image className="h-6 w-6 text-slate-400" />
                       </div>
                     </div>
                   </div>
                   
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-red-500">
+                  <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+                    <div className="flex items-center gap-6">
+                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-red-500 hover:bg-red-50 px-2 py-1 h-8">
                         <Heart className="h-4 w-4 mr-1" />
-                        <span>24</span>
+                        <span className="text-sm">24</span>
                       </Button>
-                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-blue-500">
+                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-blue-500 hover:bg-blue-50 px-2 py-1 h-8">
                         <MessageCircle className="h-4 w-4 mr-1" />
-                        <span>8</span>
+                        <span className="text-sm">8</span>
                       </Button>
-                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-green-500">
+                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-green-500 hover:bg-green-50 px-2 py-1 h-8">
                         <Share2 className="h-4 w-4 mr-1" />
-                        <span>Share</span>
+                        <span className="text-sm">Share</span>
                       </Button>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Button variant="outline" size="sm" className="border-slate-200">
-                        <Bookmark className="h-4 w-4" />
-                      </Button>
-                      <Button variant="outline" size="sm" className="border-slate-200">
-                        <Download className="h-4 w-4" />
-                      </Button>
-                    </div>
+                    <Button variant="ghost" size="sm" className="text-slate-400 hover:text-slate-600 p-1">
+                      <Bookmark className="h-4 w-4" />
+                    </Button>
                   </div>
                 </div>
               </div>
 
               {/* Post 2 */}
-              <div className="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
+              <div className="bg-white rounded-lg border border-slate-200 shadow-sm">
+                <div className="p-4">
+                  <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
-                        <User className="h-5 w-5 text-white" />
+                      <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
+                        <User className="h-4 w-4 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-slate-900">Alex Rodriguez</h3>
-                        <div className="flex items-center gap-2 text-sm text-slate-600">
-                          <MapPin className="h-4 w-4" />
-                          <span>Delhi, India</span>
+                        <h3 className="font-semibold text-slate-900 text-sm">Alex Rodriguez</h3>
+                        <div className="flex items-center gap-1 text-xs text-slate-500">
+                          <span>5h</span>
                           <span>•</span>
-                          <span>5 hours ago</span>
+                          <MapPin className="h-3 w-3" />
+                          <span>Delhi, India</span>
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Badge className="bg-purple-100 text-purple-700">Photography</Badge>
-                      <Button variant="ghost" size="sm" className="text-slate-400 hover:text-slate-600">
+                    <div className="flex items-center gap-1">
+                      <Badge className="bg-purple-100 text-purple-700 text-xs px-2 py-1">Photography</Badge>
+                      <Button variant="ghost" size="sm" className="text-slate-400 hover:text-slate-600 p-1">
                         <MoreVertical className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
                   
-                  <p className="text-slate-700 mb-4">
+                  <p className="text-slate-700 text-sm mb-3 leading-relaxed">
                     Captured this stunning sunset during my recent trip to Goa. The colors were absolutely breathtaking! Sometimes the best shots happen when you least expect them. #photography #sunset #goa #travel
                   </p>
                   
-                  <div className="aspect-video bg-slate-100 rounded-lg overflow-hidden mb-4">
+                  <div className="aspect-video bg-slate-100 rounded-lg overflow-hidden mb-3">
                     <div className="w-full h-full bg-gradient-to-br from-orange-100 to-pink-100 flex items-center justify-center">
-                      <Video className="h-12 w-12 text-slate-400" />
+                      <Video className="h-8 w-8 text-slate-400" />
                     </div>
                   </div>
                   
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-red-500">
+                  <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+                    <div className="flex items-center gap-6">
+                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-red-500 hover:bg-red-50 px-2 py-1 h-8">
                         <Heart className="h-4 w-4 mr-1" />
-                        <span>47</span>
+                        <span className="text-sm">47</span>
                       </Button>
-                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-blue-500">
+                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-blue-500 hover:bg-blue-50 px-2 py-1 h-8">
                         <MessageCircle className="h-4 w-4 mr-1" />
-                        <span>12</span>
+                        <span className="text-sm">12</span>
                       </Button>
-                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-green-500">
+                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-green-500 hover:bg-green-50 px-2 py-1 h-8">
                         <Share2 className="h-4 w-4 mr-1" />
-                        <span>Share</span>
+                        <span className="text-sm">Share</span>
                       </Button>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Button variant="outline" size="sm" className="border-slate-200">
-                        <Bookmark className="h-4 w-4" />
-                      </Button>
-                      <Button variant="outline" size="sm" className="border-slate-200">
-                        <Download className="h-4 w-4" />
-                      </Button>
-                    </div>
+                    <Button variant="ghost" size="sm" className="text-slate-400 hover:text-slate-600 p-1">
+                      <Bookmark className="h-4 w-4" />
+                    </Button>
                   </div>
                 </div>
               </div>
 
               {/* Post 3 */}
-              <div className="bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
+              <div className="bg-white rounded-lg border border-slate-200 shadow-sm">
+                <div className="p-4">
+                  <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center">
-                        <User className="h-5 w-5 text-white" />
+                      <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center">
+                        <User className="h-4 w-4 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-slate-900">Priya Sharma</h3>
-                        <div className="flex items-center gap-2 text-sm text-slate-600">
-                          <MapPin className="h-4 w-4" />
-                          <span>Bangalore, India</span>
+                        <h3 className="font-semibold text-slate-900 text-sm">Priya Sharma</h3>
+                        <div className="flex items-center gap-1 text-xs text-slate-500">
+                          <span>1d</span>
                           <span>•</span>
-                          <span>1 day ago</span>
+                          <MapPin className="h-3 w-3" />
+                          <span>Bangalore, India</span>
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Badge className="bg-emerald-100 text-emerald-700">UI/UX</Badge>
-                      <Button variant="ghost" size="sm" className="text-slate-400 hover:text-slate-600">
+                    <div className="flex items-center gap-1">
+                      <Badge className="bg-emerald-100 text-emerald-700 text-xs px-2 py-1">UI/UX</Badge>
+                      <Button variant="ghost" size="sm" className="text-slate-400 hover:text-slate-600 p-1">
                         <MoreVertical className="h-4 w-4" />
                       </Button>
                     </div>
                   </div>
                   
-                  <p className="text-slate-700 mb-4">
+                  <p className="text-slate-700 text-sm mb-3 leading-relaxed">
                     Working on a mobile app redesign for a fintech startup. The challenge was to make complex financial data accessible and user-friendly. Here's a sneak peek at the wireframes! #uiux #mobile #fintech #wireframes
                   </p>
                   
-                  <div className="grid grid-cols-3 gap-2 mb-4">
+                  <div className="grid grid-cols-3 gap-2 mb-3">
                     <div className="aspect-square bg-slate-100 rounded-lg overflow-hidden">
                       <div className="w-full h-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
                         <Image className="h-6 w-6 text-slate-400" />
@@ -343,37 +286,32 @@ export default function Page() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-red-500">
+                  <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+                    <div className="flex items-center gap-6">
+                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-red-500 hover:bg-red-50 px-2 py-1 h-8">
                         <Heart className="h-4 w-4 mr-1" />
-                        <span>31</span>
+                        <span className="text-sm">31</span>
                       </Button>
-                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-blue-500">
+                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-blue-500 hover:bg-blue-50 px-2 py-1 h-8">
                         <MessageCircle className="h-4 w-4 mr-1" />
-                        <span>6</span>
+                        <span className="text-sm">6</span>
                       </Button>
-                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-green-500">
+                      <Button variant="ghost" size="sm" className="text-slate-600 hover:text-green-500 hover:bg-green-50 px-2 py-1 h-8">
                         <Share2 className="h-4 w-4 mr-1" />
-                        <span>Share</span>
+                        <span className="text-sm">Share</span>
                       </Button>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Button variant="outline" size="sm" className="border-slate-200">
-                        <Bookmark className="h-4 w-4" />
-                      </Button>
-                      <Button variant="outline" size="sm" className="border-slate-200">
-                        <Download className="h-4 w-4" />
-                      </Button>
-                    </div>
+                    <Button variant="ghost" size="sm" className="text-slate-400 hover:text-slate-600 p-1">
+                      <Bookmark className="h-4 w-4" />
+                    </Button>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Load More Button */}
-            <div className="text-center pt-6">
-              <Button variant="outline" className="border-slate-200 px-8">
+            <div className="text-center pt-4">
+              <Button variant="outline" className="border-slate-200 px-6 text-sm">
                 Load More Posts
               </Button>
             </div>

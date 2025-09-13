@@ -57,147 +57,137 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="mx-auto max-w-7xl flex min-h-screen">
-        <div className="w-full lg:w-1/2 flex items-center justify-center py-12 px-6 sm:px-12">
-          <div className="w-full max-w-md space-y-8">
-        {/* <div className="flex justify-center">
-          <img src="/loginpage.png" alt="Logo" className="h-10 w-auto" />
-        </div> */}
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
-          </h2>
-          {/* <p className="mt-2 text-center text-sm text-gray-600">
-            Not a member? <a className="text-blue-600 hover:text-blue-500" href="#">Start a 14 day free trial</a>
-          </p> */}
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className=" flex min-h-screen">
+        <div className="w-full lg:w-1/2 flex items-center justify-center py-8 px-6 sm:px-8">
+          <div className="w-full max-w-md">
+            <div className="  p-8">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <Lock className="h-8 w-8 text-white" />
+                </div>
+                <h2 className="text-2xl font-bold text-slate-900 mb-2" style={{ fontFamily: 'Atyp Display, ui-sans-serif, system-ui, sans-serif' }}>
+                  Welcome back
+                </h2>
+                <p className="text-slate-600" style={{ fontFamily: 'Atyp Display, ui-sans-serif, system-ui, sans-serif' }}>
+                  Sign in to your account
+                </p>
+              </div>
         
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email address
-              </label>
-              <div className="mt-1 relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="space-y-5">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2" style={{ fontFamily: 'Atyp Display, ui-sans-serif, system-ui, sans-serif' }}>
+                      Email address
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <Mail className="h-5 w-5 text-slate-400" />
+                      </div>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        required
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl text-sm placeholder-slate-500 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-slate-50 transition-all duration-200 hover:bg-white"
+                        placeholder="Enter your email"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="password" className="block text-sm font-semibold text-slate-700 mb-2" style={{ fontFamily: 'Atyp Display, ui-sans-serif, system-ui, sans-serif' }}>
+                      Password
+                    </label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <Lock className="h-5 w-5 text-slate-400" />
+                      </div>
+                      <input
+                        id="password"
+                        name="password"
+                        type={showPassword ? 'text' : 'password'}
+                        autoComplete="current-password"
+                        required
+                        value={formData.password}
+                        onChange={handleInputChange}
+                        className="w-full pl-12 pr-12 py-3 border border-slate-200 rounded-xl text-sm placeholder-slate-500 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-slate-50 transition-all duration-200 hover:bg-white"
+                        placeholder="Enter your password"
+                      />
+                      <button
+                        type="button"
+                        className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 transition-colors"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? (
+                          <EyeOff className="h-5 w-5" />
+                        ) : (
+                          <Eye className="h-5 w-5" />
+                        )}
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="appearance-none relative block w-full pl-10 pr-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Enter your email"
-                />
-              </div>
-            </div>
-            
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <div className="mt-1 relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <input
+                      id="remember-me"
+                      name="remember-me"
+                      type="checkbox"
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300 rounded"
+                    />
+                    <label htmlFor="remember-me" className="ml-3 block text-sm text-slate-700" style={{ fontFamily: 'Atyp Display, ui-sans-serif, system-ui, sans-serif' }}>
+                      Remember me
+                    </label>
+                  </div>
+
+                  <div className="text-sm">
+                    <a href="/forget" className="font-semibold text-blue-600 hover:text-blue-500 transition-colors" style={{ fontFamily: 'Atyp Display, ui-sans-serif, system-ui, sans-serif' }}>
+                      Forgot password?
+                    </a>
+                  </div>
                 </div>
-                <input
-                  id="password"
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  autoComplete="current-password"
-                  required
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  className="appearance-none relative block w-full pl-10 pr-10 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Enter your password"
-                />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400" />
-                  ) : (
-                    <Eye className="h-5 w-5 text-gray-400" />
-                  )}
-                </button>
-              </div>
+
+                <div>
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-xl text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
+                    style={{ fontFamily: 'Atyp Display, ui-sans-serif, system-ui, sans-serif' }}
+                  >
+                    {isLoading ? 'Signing in...' : 'Sign in'}
+                  </button>
+                </div>
+
+
+                <div className="text-center pt-4">
+                  <p className="text-sm text-slate-600" style={{ fontFamily: 'Atyp Display, ui-sans-serif, system-ui, sans-serif' }}>
+                    Don't have an account?{' '}
+                    <a href="/signup" className="font-semibold text-blue-600 hover:text-blue-500 transition-colors" style={{ fontFamily: 'Atyp Display, ui-sans-serif, system-ui, sans-serif' }}>
+                      Sign up
+                    </a>
+                  </p>
+                </div>
+              </form>
             </div>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-              />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                Remember me
-              </label>
-            </div>
-
-            <div className="text-sm">
-              <a href="/forget" className="font-medium text-blue-600 hover:text-blue-500">
-                Forgot your password?
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isLoading ? 'Signing in...' : 'Sign in'}
-            </button>
-          </div>
-
-          {/* Divider */}
-          <div className="flex items-center gap-3 my-2">
-            <div className="h-px bg-gray-200 flex-1" />
-            <span className="text-xs text-gray-500">OR</span>
-            <div className="h-px bg-gray-200 flex-1" />
-          </div>
-
-          {/* Sign in with Google (placeholder action) */}
-          <div>
-            <button
-              type="button"
-              onClick={() => alert('Google Sign-In not configured in this demo')}
-              className="w-full inline-flex items-center justify-center gap-2 py-2 px-4 border border-gray-300 text-sm font-medium rounded-lg bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="h-5 w-5">
-                <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12 c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24 s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
-                <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,16.108,18.961,13,24,13c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657 C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
-                <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.197l-6.19-5.238C29.211,35.091,26.715,36,24,36 c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
-                <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.793,2.239-2.231,4.166-4.094,5.566 c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.152,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
-              </svg>
-              Continue with Google
-            </button>
-          </div>
-
-          <div className="text-center">
-            <p className="text-sm text-gray-600">
-              Don't have an account?{' '}
-              <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
-                Sign up
-              </a>
-            </p>
-          </div>
-        </form>
           </div>
         </div>
-        <div className="hidden lg:block w-1/2 relative">
-          <img src="/loginpage.png" alt="Login" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="hidden lg:block w-1/2 rounded-bl-[8rem] relative bg-gradient-to-br from-slate-900 to-slate-800">
+          <div className="absolute inset-0 "></div>
+          <img src="/gradient_2.jpg" alt="Login" className="absolute inset-0 h-full w-full object-cover " />
+          <div className="absolute inset-0 flex items-center justify-center">
+            {/* <div className="text-center text-white p-6">
+              <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <Lock className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2" style={{ fontFamily: 'Atyp Display, ui-sans-serif, system-ui, sans-serif' }}>Welcome to our platform</h3>
+              <p className="text-white/80 text-sm" style={{ fontFamily: 'Atyp Display, ui-sans-serif, system-ui, sans-serif' }}>Join thousands of creative professionals sharing their work</p>
+            </div> */}
+          </div>
         </div>
       </div>
     </div>
