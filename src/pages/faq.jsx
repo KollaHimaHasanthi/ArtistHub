@@ -37,9 +37,11 @@ export default function Page() {
   );
 }
 
-export default function Page() {
+export default function FaqPage() {
   return (
-    <div className="p-6">FAQ page</div>
+    <div className="p-6">
+      FAQ page
+    </div>
   );
 }
 

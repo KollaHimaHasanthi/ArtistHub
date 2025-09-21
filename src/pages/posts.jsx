@@ -23,7 +23,11 @@ import {
   Star,
   Bookmark,
   Download,
-  Upload
+  Upload,
+  UserPlus,
+  ChevronRight,
+  TrendingUp,
+  Gift
 } from "lucide-react"
 
 export default function Page() {
@@ -59,7 +63,9 @@ export default function Page() {
             </Button>
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 bg-slate-50">
+        <div className="flex flex-1 gap-4 p-4 bg-slate-50">
+          {/* Main Content */}
+          <div className="flex-1 max-w-4xl">
           {/* Create Post Section - Facebook-like */}
           <div className="bg-white rounded-lg border border-slate-200 shadow-sm">
             <div className="p-4">
@@ -314,6 +320,174 @@ export default function Page() {
               <Button variant="outline" className="border-slate-200 px-6 text-sm">
                 Load More Posts
               </Button>
+            </div>
+          </div>
+          </div>
+
+          {/* Right Sidebar */}
+          <div className="w-72 space-y-4">
+            {/* Friend Suggestions */}
+            <div className="bg-white rounded-lg border border-slate-200 shadow-sm">
+              <div className="p-4">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-semibold text-slate-900">Friend Suggestions</h3>
+                  <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700 text-xs">
+                    See All
+                    <ChevronRight className="h-3 w-3 ml-1" />
+                  </Button>
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center">
+                        <User className="h-5 w-5 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-slate-900 text-sm">Julia Smith</p>
+                        <p className="text-xs text-slate-500">@juliasmith</p>
+                      </div>
+                    </div>
+                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 h-7">
+                      <UserPlus className="h-3 w-3 mr-1" />
+                      Add
+                    </Button>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center">
+                        <User className="h-5 w-5 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-slate-900 text-sm">Vermillion D. Gray</p>
+                        <p className="text-xs text-slate-500">@vermilliongray</p>
+                      </div>
+                    </div>
+                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 h-7">
+                      <UserPlus className="h-3 w-3 mr-1" />
+                      Add
+                    </Button>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
+                        <User className="h-5 w-5 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-slate-900 text-sm">Mai Senpai</p>
+                        <p className="text-xs text-slate-500">@maisenpai</p>
+                      </div>
+                    </div>
+                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 h-7">
+                      <UserPlus className="h-3 w-3 mr-1" />
+                      Add
+                    </Button>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center">
+                        <User className="h-5 w-5 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-slate-900 text-sm">Azunyan U. Wu</p>
+                        <p className="text-xs text-slate-500">@azunyanwu</p>
+                      </div>
+                    </div>
+                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 h-7">
+                      <UserPlus className="h-3 w-3 mr-1" />
+                      Add
+                    </Button>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
+                        <User className="h-5 w-5 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-slate-900 text-sm">Oarack Babama</p>
+                        <p className="text-xs text-slate-500">@oarackbabama</p>
+                      </div>
+                    </div>
+                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 h-7">
+                      <UserPlus className="h-3 w-3 mr-1" />
+                      Add
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Profile Activity */}
+            <div className="bg-white rounded-lg border border-slate-200 shadow-sm">
+              <div className="p-4">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-semibold text-slate-900">Profile Activity</h3>
+                  <Button variant="ghost" size="sm" className="text-slate-400 hover:text-slate-600 p-1">
+                    <MoreVertical className="h-4 w-4" />
+                  </Button>
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                      <User className="h-3 w-3 text-white" />
+                    </div>
+                    <div className="w-6 h-6 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
+                      <User className="h-3 w-3 text-white" />
+                    </div>
+                    <div className="w-6 h-6 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center">
+                      <User className="h-3 w-3 text-white" />
+                    </div>
+                    <div className="w-6 h-6 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center">
+                      <User className="h-3 w-3 text-white" />
+                    </div>
+                    <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center">
+                      <User className="h-3 w-3 text-white" />
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg font-bold text-slate-900">+1,158</span>
+                    <span className="text-sm text-slate-600">Followers</span>
+                    <div className="flex items-center gap-1 text-green-600 text-xs">
+                      <TrendingUp className="h-3 w-3" />
+                      <span>23% vs last month</span>
+                    </div>
+                  </div>
+                  
+                  <p className="text-sm text-slate-600">
+                    You gained a substantial amount of followers this month!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Upcoming Events */}
+            <div className="bg-white rounded-lg border border-slate-200 shadow-sm">
+              <div className="p-4">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-semibold text-slate-900">Upcoming Events</h3>
+                  <Button variant="ghost" size="sm" className="text-slate-400 hover:text-slate-600 p-1">
+                    <MoreVertical className="h-4 w-4" />
+                  </Button>
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center">
+                      <Gift className="h-5 w-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-slate-900 text-sm">Friend's Birthday</p>
+                      <p className="text-xs text-slate-500">Jun 25, 2028</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
