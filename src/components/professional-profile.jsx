@@ -337,7 +337,7 @@ export default function ProfessionalProfile({ isOwnProfile = false }) {
         <TabsList className="grid w-full grid-cols-3 bg-slate-100">
           <TabsTrigger value="experience" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Experience</TabsTrigger>
           <TabsTrigger value="achievements" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Achievements</TabsTrigger>
-          <TabsTrigger value="reviews" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Reviews</TabsTrigger>
+          <TabsTrigger value="reviews" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">Ratings & Reviews</TabsTrigger>
         </TabsList>
 
         {/* Experience Tab */}

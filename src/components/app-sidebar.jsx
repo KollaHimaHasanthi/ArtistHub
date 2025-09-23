@@ -3,6 +3,8 @@
 import * as React from "react"
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
+import accountTypes from "@/lib/accountTypes.json"
+import { useAuthStore } from "@/lib/store"
 import {
   Command,
   LayoutDashboard,
@@ -44,61 +46,9 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-const data = {
-  user: {
-    name: "Eva Murphy",
-    email: "Web Developer",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  sections: [
-    {
-      label: "Profile & Account",
-      items: [
-        { title: "View profile", url: "/view-profile", icon: User },
-        { title: "Edit profile", url: "/profile", icon: Edit3 },
-        { title: "Bookings", url: "/bookings", icon: Calendar },
-        { title: "Applied jobs", url: "/applied-jobs", icon: FileText },
-        { title: "Events", url: "/events", icon: CalendarDays },
-        { title: "My posts", url: "/posts", icon: Image },
-      ],
-    },
-    {
-      label: "Discovery & Networking",
-      items: [
-        { title: "Find artist", url: "/find-artist", icon: Search },
-        { title: "Find business", url: "/find-business", icon: Building2 },
-        { title: "Hire Artist groups", url: "/hire-artists-groups", icon: Users },
-        { title: "Artist Collaborations", url: "/collaborations", icon: HeartHandshake },
-        { title: "View collabs", url: "/view-collaborations", icon: Eye },
-      ],
-    },
-    {
-      label: "Professional Services",
-      items: [
-        { title: "Privacy policy", url: "/privacy", icon: Shield },
-        { title: "Subscriptions & packages", url: "/subscriptions", icon: CreditCard },
-        { title: "Job Search", url: "/jobs", icon: Briefcase },
-        { title: "Chat", url: "/chat", icon: MessageCircle },
-        { title: "Account", url: "/account", icon: Settings },
-      ],
-    },
-    {
-      label: "Support & About",
-      items: [
-        { title: "My subscriptions", url: "/my-subscriptions", icon: CreditCard },
-        { title: "Help & support", url: "/support", icon: HelpCircle },
-        { title: "Terms & policies", url: "/terms", icon: FileCheck },
-      ],
-    },
-    {
-      label: "Actions",
-      items: [
-        { title: "FAQ", url: "/faq", icon: HelpCircle },
-        { title: "Log out", url: "/logout", icon: LogOut },
-        { title: "Refer & earn up to 10000 (Refer now)", url: "/refer", icon: Gift },
-      ],
-    },
-  ],
+function resolveIcon(name) {
+  const map = { Command, LayoutDashboard, Briefcase, CalendarDays, Image, Images, HeartHandshake, UsersRound: Users, User, Edit3, Calendar, CreditCard, Search, Building2, Shield, Users, MessageCircle, HelpCircle, FileCheck, LogOut, Gift, Settings, Eye, FileText };
+  return map[name] || User;
 }
 
 export function AppSidebar({
@@ -107,6 +57,8 @@ export function AppSidebar({
   const router = useRouter()
   const [pathname, setPathname] = useState("/")
   const [mounted, setMounted] = useState(false)
+  const { user } = useAuthStore()
+  const [sections, setSections] = useState([])
   
   useEffect(() => {
     setMounted(true)
@@ -114,6 +66,24 @@ export function AppSidebar({
       setPathname(router.pathname)
     }
   }, [router?.pathname])
+
+  useEffect(() => {
+    const role = user?.userType || 'guest'
+    const config = accountTypes[role]
+    if (config?.sections) {
+      // transform icons from string to components
+      const resolved = config.sections.map((sec) => ({
+        ...sec,
+        items: sec.items.map((it) => ({
+          ...it,
+          icon: resolveIcon(it.icon)
+        }))
+      }))
+      setSections(resolved)
+    } else {
+      setSections([])
+    }
+  }, [user])
   
   return (
     <Sidebar variant="inset" className="bg-gradient-to-b from-purple-900 via-purple-800 to-purple-900 text-white shadow-2xl" {...props}>
@@ -146,8 +116,8 @@ export function AppSidebar({
           </div>
         </div>
       </SidebarHeader>
-        <SidebarContent className="gap-2 bg-transparent hide-scrollbar mt-4 overflow-y-auto px-3">
-        {data.sections?.map((section) => (
+      <SidebarContent className="gap-2 bg-transparent hide-scrollbar mt-4 overflow-y-auto px-3">
+        {sections?.map((section) => (
           <div key={section.label} className="space-y-2">
             <div className="px-2 pb-2 text-xs font-semibold text-white/70 uppercase tracking-wider">{section.label}</div>
             <SidebarMenu className="space-y-1">

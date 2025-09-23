@@ -158,6 +158,7 @@ export function ProfessionalSidebar({ ...props }) {
     },
     rating: 4.8,
     reviews: 127,
+    collabs: 36,
     followers: 1250,
     following: 340
   }
@@ -363,7 +364,11 @@ export function ProfessionalSidebar({ ...props }) {
                 </div>
                 <div className="text-center p-3 bg-slate-50 rounded-lg">
                   <div className="text-lg font-bold text-slate-900">{profileData.reviews}</div>
-                  <div className="text-xs text-slate-600">Reviews</div>
+                  <div className="text-xs text-slate-600">Ratings & Reviews</div>
+                </div>
+                <div className="text-center p-3 bg-slate-50 rounded-lg">
+                  <div className="text-lg font-bold text-slate-900">{profileData.collabs}</div>
+                  <div className="text-xs text-slate-600">No. of Collabs</div>
                 </div>
               </div>
 

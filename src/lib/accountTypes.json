@@ -1,0 +1,108 @@
+{
+  "guest": {
+    "sections": [
+      {
+        "label": "Explore",
+        "items": [
+          { "title": "Find artist", "url": "/find-artist", "icon": "Search" },
+          { "title": "Find business", "url": "/find-business", "icon": "Building2" },
+          { "title": "Jobs", "url": "/jobs", "icon": "Briefcase" },
+          { "title": "Events", "url": "/events", "icon": "CalendarDays" }
+        ]
+      },
+      {
+        "label": "Account",
+        "items": [
+          { "title": "Login", "url": "/login", "icon": "LogIn" },
+          { "title": "Sign up", "url": "/signup", "icon": "UserPlus" }
+        ]
+      }
+    ]
+  },
+  "business": {
+    "sections": [
+      {
+        "label": "Menu",
+        "items": [
+          { "title": "View profile", "url": "/view-profile", "icon": "User" },
+          { "title": "Edit Profile", "url": "/profile", "icon": "Edit3" },
+          { "title": "Bookings", "url": "/bookings", "icon": "Calendar" },
+          { "title": "My post", "url": "/posts", "icon": "Image" },
+          { "title": "Find Artist", "url": "/find-artist", "icon": "Search" },
+          { "title": "Find Business", "url": "/find-business", "icon": "Building2" },
+          { "title": "Hire An Artist", "url": "/find-artist", "icon": "Users" },
+          { "title": "Hire an Artist Group", "url": "/hire-artists-groups", "icon": "Users" },
+          { "title": "Subscription", "url": "/subscriptions", "icon": "CreditCard" },
+          { "title": "Events (Create & Book)", "url": "/events", "icon": "CalendarDays" },
+          { "title": "JOBS (Hire an Artist)", "url": "/find-artist", "icon": "Briefcase" },
+          { "title": "JOBS (Post A job)", "url": "/jobs", "icon": "Briefcase" },
+          { "title": "Chat", "url": "/chat", "icon": "MessageCircle" },
+          { "title": "Privacy", "url": "/privacy", "icon": "Shield" },
+          { "title": "Packages & subscription", "url": "/subscriptions", "icon": "CreditCard" }
+        ]
+      },
+      {
+        "label": "Support & About",
+        "items": [
+          { "title": "My Subscription", "url": "/my-subscriptions", "icon": "CreditCard" },
+          { "title": "Help & Support", "url": "/support", "icon": "HelpCircle" },
+          { "title": "Terms &Polices", "url": "/terms", "icon": "FileCheck" }
+        ]
+      },
+      {
+        "label": "Actions",
+        "items": [
+          { "title": "FAQ", "url": "/faq", "icon": "HelpCircle" },
+          { "title": "Logout", "url": "/logout", "icon": "LogOut" }
+        ]
+      },
+      {
+        "label": "Quick Access",
+        "items": [
+          { "title": "Home", "url": "/dashboard", "icon": "LayoutDashboard" },
+          { "title": "Jobs", "url": "/jobs", "icon": "Briefcase" },
+          { "title": "Events", "url": "/events", "icon": "CalendarDays" },
+          { "title": "Chat", "url": "/chat", "icon": "MessageCircle" },
+          { "title": "Account", "url": "/account", "icon": "Settings" }
+        ]
+      }
+    ]
+  },
+  "artist": {
+    "sections": [
+      {
+        "label": "Profile & Account",
+        "items": [
+          { "title": "View profile", "url": "/view-profile", "icon": "User" },
+          { "title": "Edit profile", "url": "/profile", "icon": "Edit3" },
+          { "title": "Bookings", "url": "/bookings", "icon": "Calendar" },
+          { "title": "Applied jobs", "url": "/applied-jobs", "icon": "FileText" },
+          { "title": "Hub coins", "url": "/coins", "icon": "CreditCard" },
+          { "title": "Saved posts", "url": "/saved-posts", "icon": "Image" },
+          { "title": "Resume", "url": "/resume", "icon": "FileText" },
+          { "title": "Documents", "url": "/document", "icon": "FileText" },
+          { "title": "Groups", "url": "/groups", "icon": "Users" }
+        ]
+      },
+      {
+        "label": "Discovery & Networking",
+        "items": [
+          { "title": "Find artist", "url": "/find-artist", "icon": "Search" },
+          { "title": "Find business", "url": "/find-business", "icon": "Building2" },
+          { "title": "Artist Collaborations", "url": "/collaborations", "icon": "Handshake" },
+          { "title": "View collabs", "url": "/view-collaborations", "icon": "Eye" }
+        ]
+      },
+      {
+        "label": "Support & About",
+        "items": [
+          { "title": "My subscriptions", "url": "/my-subscriptions", "icon": "CreditCard" },
+          { "title": "Help & support", "url": "/support", "icon": "HelpCircle" },
+          { "title": "Terms & policies", "url": "/terms", "icon": "FileCheck" }
+        ]
+      }
+    ]
+  }
+}
+
+

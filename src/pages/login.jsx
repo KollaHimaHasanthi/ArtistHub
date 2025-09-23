@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { useAuthStore } from '@/lib/store';
+import credentials from '@/lib/credentials';
+import { useRouter } from 'next/router';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
 
 export default function LoginForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -15,38 +18,29 @@ export default function LoginForm() {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call
+    // Simulated auth against local credentials
     setTimeout(() => {
-      // Default login for first-time users
-      const defaultUser = {
-        id: '1',
-        name: 'Guest User',
-        email: formData.email || 'guest@example.com',
-        userType: 'guest',
-        profile: {
-          fullName: 'Guest User',
-          dateOfBirth: '',
-          about: '',
-          skills: [],
-          designation: '',
-          languages: [],
-          location: {
-            country: '',
-            state: '',
-            city: ''
-          },
-          gender: '',
-          currentRole: '',
-          socialLinks: [],
-          experience: [],
-          achievements: [],
-          verified: false
-        }
+      const match = Object.values(credentials).find(
+        (c) => c.email === formData.email && c.password === formData.password
+      );
+
+      if (!match) {
+        alert('Invalid credentials');
+        setIsLoading(false);
+        return;
+      }
+
+      const user = {
+        id: match.userType,
+        name: match.name,
+        email: match.email,
+        userType: match.userType,
       };
 
-      login(defaultUser);
+      login(user);
       setIsLoading(false);
-    }, 1000);
+      router.push('/dashboard');
+    }, 600);
   };
 
   const handleInputChange = (e) => {
