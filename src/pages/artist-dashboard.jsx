@@ -1,5 +1,4 @@
-
-import Sidebar from "@/components/artist-sidebar";
+import { AppSidebar as Sidebar } from "@/components/app-sidebar";
 
 export const metadata = {
   title: "Dashboard App",
