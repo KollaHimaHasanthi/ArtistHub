@@ -1,22 +1,16 @@
-import { AppSidebar as Sidebar } from "@/components/app-sidebar";
+import React from "react";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
-export const metadata = {
-  title: "Dashboard App",
-  description: "Next.js Dashboard with Sidebar",
-};
-
-export default function RootLayout({ children }) {
+export default function ArtistDashboard() {
   return (
-    <html lang="en">
-      <body className="flex">
-        {/* Sidebar Imported */}
-        <Sidebar />
-        
-        {/* Main Content */}
-        <main className="flex-1 p-6 bg-gray-50 min-h-screen">
-          {children}
+    <SidebarProvider>
+      <div className="flex min-h-screen">
+        <AppSidebar />
+        <main className="flex-1 p-6 bg-gray-50">
+          <h1 className="text-2xl font-semibold">Artist Dashboard</h1>
         </main>
-      </body>
-    </html>
+      </div>
+    </SidebarProvider>
   );
 }

@@ -1,27 +1,26 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { Mail, Phone, User, Lock, Eye, EyeOff, ArrowRight, Palette, Users, Building2 } from 'lucide-react';
-import { Geist, Geist_Mono } from "next/font/google";
+import React from 'react';
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import FeaturesSection from './components/FeaturesSection';
+import BrandsSection from './components/BrandsSection';
+import CategoriesSection from './components/CategoriesSection';
+import ServicesSection from './components/ServicesSection';
+import AboutSection from './components/AboutSection';
+import Footer from './components/Footer';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export default function Home() {
-  return null;
+function App() {
+  return (
+    <div className="min-h-screen">
+      <Navbar />
+      <HeroSection />
+      <FeaturesSection />
+      <ServicesSection />
+      <BrandsSection />
+      <CategoriesSection />
+      <AboutSection />
+      <Footer />
+    </div>
+  );
 }
 
-export async function getServerSideProps() {
-  return {
-    redirect: {
-      destination: "/dashboard",
-      permanent: false,
-    },
-  };
-}
+export default App;
